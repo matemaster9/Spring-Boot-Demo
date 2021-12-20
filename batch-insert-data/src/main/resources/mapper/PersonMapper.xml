@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.matemaster9.batch.mapper.PersonMapper">
+    <insert id="batchInsert" parameterType="tech.matemaster9.batch.entity.Person">
+        insert into tb_person (name, phone, salary, company, is_single, sex, address, create_time, create_user)
+        values
+        <foreach collection="items" item="item" separator=",">
+            (#{item.name}, #{item.phone}, #{item.salary}, #{item.company}, #{item.single}, #{item.sex},
+            #{item.address}, now(), #{item.createUser})
+        </foreach>
+    </insert>
+</mapper>
