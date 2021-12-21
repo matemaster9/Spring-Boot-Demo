@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.matemaster9.batch.mapper.PersonMapper">
+
+    <resultMap id="queryMap" type="tech.matemaster9.batch.dto.PersonDTO">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="salary" column="salary"/>
+        <result property="single" column="is_single"/>
+        <result property="sex" column="sex"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createUser" column="create_user"/>
+    </resultMap>
+
+    <select id="batchQuery" resultType="java.util.List" resultMap="queryMap">
+        select *
+        from tb_person;
+    </select>
+
+</mapper>
