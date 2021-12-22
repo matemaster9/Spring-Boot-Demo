@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    druid:
+      sqlserver-datasource:
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        url: jdbc:sqlserver://localhost:1433;DatabaseName=db_act
+        username: sa
+        password: Mashimaro980
+        type: com.alibaba.druid.pool.DruidDataSource
+
+      mysql-datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/db_act?characterEncoding=UTF-8&useUnicode=true
+        username: root
+        password: Mashimaro980
+        type: com.alibaba.druid.pool.DruidDataSource
