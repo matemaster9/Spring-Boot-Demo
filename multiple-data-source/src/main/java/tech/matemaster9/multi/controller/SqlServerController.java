@@ -19,4 +19,10 @@ public class SqlServerController {
     public void sqlserverDemo() {
         System.out.println("数据量：" + sqlServerService.getData().size());
     }
+    
+    @RequestMapping("/batch-insert-demo")
+    public void batchInsertDemo() {
+        // 生成随机数据接口
+        sqlServerService.batchInsertDemo();
+    }
 }
