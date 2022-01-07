@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: dev
+
+thread:
+  pool:
+    core-pool-size: 10
+    max-pool-size: 20
+    keep-alive-second: 60
+    queue-size: 100
