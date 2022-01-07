@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Description:
+ * @Description: Druid连接池属性
  * @Author: matemaster9
  * @Date: 2022/1/4 20:35
  */

@@ -13,6 +13,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-public @interface DataSource {
+public @interface TargetDataSource {
     DataSourceEnum value() default DataSourceEnum.MASTER;
 }

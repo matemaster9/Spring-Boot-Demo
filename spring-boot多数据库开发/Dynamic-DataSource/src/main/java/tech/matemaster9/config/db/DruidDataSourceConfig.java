@@ -9,14 +9,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import tech.matemaster9.config.ds.DynamicDataSource;
+import tech.matemaster9.config.ds.RoutingDataSource;
 import tech.matemaster9.entity.enums.DataSourceEnum;
 
 import javax.sql.DataSource;
 import java.util.Map;
 
 /**
- * @Description:
+ * @Description: 动态数据源配置
  * @Author: matemaster9
  * @Date: 2022/1/4 20:32
  */
@@ -40,11 +40,11 @@ public class DruidDataSourceConfig {
 
     @Bean("dynamicDataSource")
     @Primary
-    public DynamicDataSource dynamicDS(@Qualifier("masterDataSource") DataSource master,
+    public RoutingDataSource dynamicDS(@Qualifier("masterDataSource") DataSource master,
                                        @Qualifier("slaveDataSource") DataSource slave) {
         Map<Object, Object> targetDataSources = Maps.newHashMap();
         targetDataSources.put(DataSourceEnum.MASTER.name(), master);
         targetDataSources.put(DataSourceEnum.SLAVE.name(), slave);
-        return new DynamicDataSource(master, targetDataSources);
+        return new RoutingDataSource(master, targetDataSources);
     }
 }

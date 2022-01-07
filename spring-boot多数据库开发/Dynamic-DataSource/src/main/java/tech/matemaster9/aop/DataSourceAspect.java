@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import tech.matemaster9.annotation.DataSource;
-import tech.matemaster9.config.ds.ContextHolder;
+import tech.matemaster9.annotation.TargetDataSource;
+import tech.matemaster9.config.ds.DataSourceHolder;
 
 import java.util.Objects;
 
@@ -26,23 +26,23 @@ import java.util.Objects;
 public class DataSourceAspect {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Pointcut("@annotation(tech.matemaster9.annotation.DataSource)")
+    @Pointcut("@annotation(tech.matemaster9.annotation.TargetDataSource)")
     public void dataSourcePointCut() {
     }
 
     @Around("dataSourcePointCut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable{
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        DataSource dataSource = AnnotationUtils.findAnnotation(signature.getMethod(), DataSource.class);
-        if (Objects.isNull(dataSource)) {
-            dataSource = AnnotationUtils.findAnnotation(signature.getDeclaringType(), DataSource.class);
+        TargetDataSource targetDataSource = AnnotationUtils.findAnnotation(signature.getMethod(), TargetDataSource.class);
+        if (Objects.isNull(targetDataSource)) {
+            targetDataSource = AnnotationUtils.findAnnotation(signature.getDeclaringType(), TargetDataSource.class);
         }
-        ContextHolder.setDataSourceType(dataSource.value().name());
+        DataSourceHolder.setDataSourceType(targetDataSource.value().name());
 
         try {
             return joinPoint.proceed();
         } finally {
-            ContextHolder.clearDataSource();
+            DataSourceHolder.release();
         }
     }
 }

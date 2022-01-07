@@ -2,7 +2,7 @@ package tech.matemaster9.service.Impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import tech.matemaster9.annotation.DataSource;
+import tech.matemaster9.annotation.TargetDataSource;
 import tech.matemaster9.entity.dto.CompanyDto;
 import tech.matemaster9.entity.dto.SysUserDto;
 import tech.matemaster9.entity.enums.DataSourceEnum;
@@ -24,13 +24,13 @@ public class SysServiceImpl implements SysService {
     private CompanyMapper slave;
 
     @Override
-    @DataSource(DataSourceEnum.MASTER)
+    @TargetDataSource(DataSourceEnum.MASTER)
     public List<SysUserDto> getSysUserInfo() {
         return master.selectAll();
     }
 
     @Override
-    @DataSource(DataSourceEnum.SLAVE)
+    @TargetDataSource(DataSourceEnum.SLAVE)
     public List<CompanyDto> getCompanyInfo() {
         return slave.selectAll();
     }

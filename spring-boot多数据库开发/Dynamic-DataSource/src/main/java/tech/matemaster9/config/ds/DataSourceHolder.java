@@ -4,11 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @Description:
+ * @Description: 数据源容器
  * @Author: matemaster9
  * @Date: 2022/1/4 21:56
  */
-public class ContextHolder {
+public final class DataSourceHolder {
     public static final Logger log = LoggerFactory.getLogger("DynamicDataSourceLog");
 
     private static final ThreadLocal<String> CONTEXT_HOLDER = new ThreadLocal<>();
@@ -22,7 +22,7 @@ public class ContextHolder {
         return CONTEXT_HOLDER.get();
     }
 
-    public static void clearDataSource() {
+    public static void release() {
         CONTEXT_HOLDER.remove();
     }
 }
