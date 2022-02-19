@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <lang3.version>3.12.0</lang3.version>
     </properties>
 
     <dependencies>
@@ -37,6 +38,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${lang3.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
