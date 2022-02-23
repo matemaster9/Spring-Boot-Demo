@@ -5,5 +5,8 @@ package cs.matemaster.mq;
  * @Author: MateMaster
  * @Date: 2022/2/23 20:59
  */
-public class MqPublisher {
+public class MQPublisher {
+    public static void main(String[] args) {
+
+    }
 }

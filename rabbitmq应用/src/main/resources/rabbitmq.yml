@@ -1,0 +1,6 @@
+# rabbitmq
+host: localhost
+virtualHost: vhost
+username: matemaster
+password: 32APP1e910!#
+port: 5672
